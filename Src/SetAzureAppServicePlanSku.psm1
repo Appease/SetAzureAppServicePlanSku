@@ -25,16 +25,12 @@ function Invoke(
         ValueFromPipelineByPropertyName=$true)]
     $Sku
 ){
-
-    $ApiVersion = '2014-04-01'
-    $ResourceType = 'Microsoft.Web/serverFarms'
-
     AzureResourceManager\Set-AzureResource `
-    -Name $Name `
-    -ResourceGroupName $ResourceGroupName `
-    -ResourceType $ResourceType `
-    -ApiVersion $ApiVersion `
-    -PropertyObject @{sku=$Sku}
+        -Name $Name `
+        -ResourceGroupName $ResourceGroupName `
+        -ResourceType 'Microsoft.Web/serverFarms' `
+        -ApiVersion '2014-04-01' `
+        -PropertyObject @{sku=$Sku}
 }
 
 Export-ModuleMember -Function Invoke
